@@ -12,3 +12,14 @@ CREATE PROCEDURE `otsing1taht`(IN `taht` CHAR(1)) NOT DETERMINISTIC CONTAINS SQL
 	select * from film
 	where filmnimetus like concat(taht,'%');
 end;
+--protseduuri käivitamine
+CALL otsing1taht ('C'); 
+
+-- filmi kustustamine
+CREATE PROCEDURE `kustutaFilm`(IN `id` INT) NOT DETERMINISTIC CONTAINS SQL SQL SECURITY DEFINER 
+	
+begin 
+select * from film; 
+delete from film where filmid=id; 
+select * from film;
+end; 
